@@ -11,3 +11,13 @@ build3 : 3q.cpp
 
 build4 : 4q.cpp
 	g++ $^ -g -Wall `pkg-config --cflags --libs opencv` -o hoge
+
+build5 : 5q.cpp
+	g++ $^ -g -Wall `pkg-config --cflags --libs opencv` -o fuga
+
+
+
+# test
+
+build_hsv : hsv.cpp
+	g++ $^ -g -Wall `pkg-config --cflags --libs opencv` -o hoge
