@@ -4,6 +4,7 @@
 using namespace std;
 
 void bgr2hsv(cv::Mat &src, cv::Mat &dst);
+void inverse_h(cv::Mat &src, cv::Mat &dst);
 void hsv2rgb(cv::Mat &src, cv::Mat &dst);
 
 
@@ -13,11 +14,18 @@ int main()
     cv::Mat dst0 = cv::Mat::zeros(src.rows, src.cols, CV_32FC3);//!
     cv::Mat dst1 = cv::Mat::zeros(src.rows, src.cols, CV_8UC3);//!
     bgr2hsv(src, dst0);
-    hsv2rgb(dst0, dst1);   
+    cv::imshow("hoge", dst0);
+    cv::waitKey(0);
+
+    inverse_h(dst0, dst0);
+    cv::imshow("hoge", dst0);
+    cv::waitKey(0);
+
+    hsv2rgb(dst0, dst1);
     cv::imshow("hoge", dst1);
     cv::waitKey(0);
     
-    cv::imwrite("./img/5q_failed_ans.jpg", dst1);
+    cv::imwrite("./img/5q_ans.jpg", dst1);
     return 0;
 }
 
@@ -55,6 +63,18 @@ void bgr2hsv(cv::Mat &src, cv::Mat &dst)
             dst.at<cv::Vec3f>(y, x)[0] = h;
             dst.at<cv::Vec3f>(y, x)[1] = s;
             dst.at<cv::Vec3f>(y, x)[2] = v;
+        }
+    }
+}
+
+
+void inverse_h(cv::Mat &src, cv::Mat &dst)
+{
+    float temp;
+    for(int y = 0; y < src.rows; y++){
+        for(int x = 0; x < src.cols; x++){
+            temp = fmod(src.at<cv::Vec3f>(y, x)[0] + 180, 360);//反転
+            dst.at<cv::Vec3f>(y, x)[0] = temp;
         }
     }
 }
@@ -102,3 +122,4 @@ void hsv2rgb(cv::Mat &src, cv::Mat &dst)
         }
     }
 }
+
