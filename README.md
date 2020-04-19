@@ -3,9 +3,9 @@ C++学習用
 
 ## 環境
 
-OpenCV3
+OpenCV3 (3.2.0)
 ubuntu 18.04 (WSL1)
-pkg-config必要
+pkg-config
 
 ## その他
 
@@ -13,3 +13,13 @@ pkg-config必要
 OpenCVのデフォルトは折り返し表示．
 https://qiita.com/fukushima1981/items/cb74323e13f3a26cb67d
 らしいのでそれに任せた．
+
+## 問題に関するコメント
+
+Q.33 lowpassフィルタの実装が怪しい  
+画素値が1下がるだけという謎実装になってる．  
+dftとidft部分は多分問題なし．  
+
+Q.36,37,38,40はパス
+
+
