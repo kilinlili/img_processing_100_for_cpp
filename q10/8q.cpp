@@ -14,7 +14,7 @@ void average_pooling8x8(cv::Mat &src, cv::Mat &dst)
                 value = 0; 
                 for(int dy = 0; dy < 8; dy++){                
                     for(int dx = 0; dx < 8; dx++){
-                      if(value < src.at<cv::Vec3b>(y + dy, x + dx)[c])value = src.at<cv::Vec3b>(y + dy, x + dx)[c];
+                      if(value < src.at<cv::Vec3b>(y + dy, x + dx)[c]) value = src.at<cv::Vec3b>(y + dy, x + dx)[c];
                     }
                 }
                 //dst
@@ -38,6 +38,6 @@ int main(void)
     cv::imshow("test", dst0);
     cv::waitKey(0);
     
-    cv::imwrite("./img/7q_ans.jpg", dst0);
+    cv::imwrite("./img/8q_ans.jpg", dst0);
     return 0;
 }

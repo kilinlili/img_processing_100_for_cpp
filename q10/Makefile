@@ -37,3 +37,6 @@ build10 : 10q.cpp
 
 build_hsv : hsv.cpp
 	g++ $^ -g -Wall `pkg-config --cflags --libs opencv` -o hoge
+
+test : answer_1.cpp
+	g++ $^ -g -Wall `pkg-config --cflags --libs opencv` -o hoge
